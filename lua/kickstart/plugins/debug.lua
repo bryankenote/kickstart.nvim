@@ -39,6 +39,7 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
+        'netcoredbg',
       },
     }
 
@@ -47,10 +48,38 @@ return {
     vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
     vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
     vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
-    vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-    vim.keymap.set('n', '<leader>B', function()
+    vim.keymap.set('n', '<leader>dT', dap.terminate, { desc = 'Terminate' })
+    vim.keymap.set('n', '<leader>dc', dap.run_to_cursor, { desc = 'Run to cursor' })
+    vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
+    vim.keymap.set('n', '<leader>dB', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-    end, { desc = 'Debug: Set Breakpoint' })
+    end, { desc = 'Set Breakpoint' })
+
+    -- Dap adapter setup
+    dap.adapters.netcoredbg = {
+      type = 'executable',
+      command = '/usr/local/netcoredbg',
+      args = { '--interpreter=vscode' },
+    }
+
+    -- Dap configuration setup
+    dap.configurations.cs = {
+      -- Used with test runner
+      {
+        type = 'netcoredbg',
+        name = 'netcoredbg',
+        request = 'attach',
+      },
+      -- Used to attach to process
+      {
+        type = 'netcoredbg',
+        name = 'netcoredbg - pick',
+        request = 'attach',
+        processId = function()
+          return require('dap.utils').pick_process { filter = 'Faithlife' }
+        end,
+      },
+    }
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
