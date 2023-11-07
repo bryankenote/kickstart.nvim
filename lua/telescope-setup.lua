@@ -63,7 +63,7 @@ local function custom_path_display(opts, path)
 end
 
 local _actions = require 'telescope.actions'
-local _persisted_actions = require 'telescope._extensions.persisted.actions'
+-- local _persisted_actions = require 'telescope._extensions.persisted.actions'
 require('telescope').setup {
   defaults = {
     show_dotfiles = true,
@@ -88,6 +88,9 @@ require('telescope').setup {
       show_line = false,
     },
     lsp_implementations = {
+      show_line = false,
+    },
+    diagnostics = {
       show_line = false,
     },
     buffers = {
@@ -127,7 +130,7 @@ vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { des
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>st', require('telescope.builtin').live_grep, { desc = '[S]earch [T]ext' })
-vim.keymap.set('n', '<leader><tab>', '<cmd>Telescope telescope-tabs list_tabs initial_mode=insert<cr>', { desc = '[S]earch [T]abs' })
+vim.keymap.set('n', '<leader><tab>', '<cmd>Telescope telescope-tabs list_tabs initial_mode=insert<cr>', { desc = 'Search tabs' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sl', require('telescope.builtin').resume, { desc = '[S]earch resume [L]ast' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').oldfiles, { desc = '[S]earch [R]ecent' })

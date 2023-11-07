@@ -6,10 +6,6 @@ return {
       return
     end
 
-    vim.cmd [[
-        nnoremap - :NvimTreeToggle<CR>
-      ]]
-
     local function on_attach(bufnr)
       local api = require 'nvim-tree.api'
 

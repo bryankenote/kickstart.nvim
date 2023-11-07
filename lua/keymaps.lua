@@ -19,9 +19,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+vim.keymap.set('n', '<leader>Lc', '<cmd>e ~/.config/nvim<cr>', { desc = 'Edit [c]onfig' })
+
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+vim.keymap.set('n', 'dk', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', 'dj', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
@@ -61,8 +63,6 @@ vim.keymap.set('n', '<leader>Dc', '<cmd>DiffviewClose<cr>', { desc = 'Close' })
 
 vim.keymap.set('n', '<leader>l>', '<cmd>LspStart<cr>', { desc = 'Enable lsp' })
 vim.keymap.set('n', '<leader>l<', '<cmd>LspStop<cr>', { desc = 'Disable lsp' })
-
-vim.keymap.set('n', '<leader>z', '<cmd>ZenMode<cr>', { desc = 'Zen mode' })
 
 vim.keymap.set('n', '<leader>w', '<cmd>w<cr>', { desc = '[W]rite file' })
 vim.keymap.set('n', '<leader>q', '<cmd>confirm q<cr>', { desc = '[Q]uit' })

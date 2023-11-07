@@ -86,5 +86,7 @@ which_key.register {
   ['<leader>l'] = { name = '[L]sp', _ = 'which_key_ignore' },
   ['<leader>lw'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
   ['<leader>m'] = { name = '[M]arks', _ = 'which_key_ignore' },
+  ['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
+  ['<leader>t'] = { name = '[T]est', _ = 'which_key_ignore' },
   -- ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
 }
