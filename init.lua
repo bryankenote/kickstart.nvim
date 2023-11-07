@@ -70,5 +70,9 @@ require 'lsp-setup'
 -- Configure CMP (completion)
 require 'cmp-setup'
 
+vim.api.nvim_set_hl(0, 'IlluminatedWordText', { link = 'Visual' })
+vim.api.nvim_set_hl(0, 'IlluminatedWordRead', { link = 'Visual' })
+vim.api.nvim_set_hl(0, 'IlluminatedWordWrite', { link = 'Visual' })
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
