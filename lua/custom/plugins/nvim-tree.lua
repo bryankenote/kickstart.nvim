@@ -23,7 +23,13 @@ return {
     end
 
     -- local keymap = vim.keymap -- for conciseness
-    vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', { desc = '[E]xplorer' }) -- toggle file explorer
+    -- https://github.com/nvim-tree/nvim-tree.lua/issues/2520#issuecomment-1801342927
+    vim.keymap.set('n', '<leader>e', function()
+      if vim.bo.filetype == 'TelescopePrompt' then
+        require('telescope.actions').close(vim.api.nvim_get_current_buf())
+      end
+      vim.cmd 'NvimTreeToggle'
+    end, { desc = '[E]xplorer' }) -- toggle file explorer
 
     -- vim.opt.foldmethod = "expr"
     -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

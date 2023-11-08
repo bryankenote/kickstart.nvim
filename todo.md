@@ -1,6 +1,5 @@
 # fix keymaps with telescope
 
-- openning explorer while telescope is open
 - dd to delete sessions
 
 # fix indent highlight
@@ -11,6 +10,4 @@ https://github.com/lukas-reineke/indent-blankline.nvim/issues/765#issuecomment-1
 
 # lsp overloads
 
-# illuminate?
-
-# refactor?
+# refactoring.nvim?
