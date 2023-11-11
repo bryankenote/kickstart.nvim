@@ -39,6 +39,9 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
 vim.opt.relativenumber = true
 vim.opt.autoindent = true
 vim.opt.tabstop = 4
@@ -48,5 +51,5 @@ vim.opt.so = 16
 -- vim.opt.listchars:append("trail:·")
 -- vim.opt.listchars:append("lead:·")
 vim.opt.fillchars = { eob = ' ' }
-vim.opt.diffopt:append { 'filler', 'context:9999', 'iwhite' }
+vim.opt.diffopt:append { 'filler', 'context:9999', 'iwhite', 'vertical' }
 -- vim: ts=2 sts=2 sw=2 et
