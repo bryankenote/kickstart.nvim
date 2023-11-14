@@ -39,22 +39,20 @@ require('lazy').setup({
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
       end
       vim.diagnostic.config {
-        diagnostic = {
-          signs = {
-            active = signs,
-          },
-          virtual_text = true,
-          update_in_insert = false,
-          underline = true,
-          severity_sort = true,
-          float = {
-            focusable = true,
-            style = 'minimal',
-            border = 'rounded',
-            source = 'always',
-            header = '',
-            prefix = '',
-          },
+        signs = {
+          active = signs,
+        },
+        virtual_text = true,
+        update_in_insert = false,
+        underline = true,
+        severity_sort = true,
+        float = {
+          focusable = true,
+          style = 'minimal',
+          border = 'rounded',
+          source = 'always',
+          header = '',
+          prefix = '',
         },
       }
 
