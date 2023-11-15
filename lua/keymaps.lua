@@ -49,7 +49,7 @@ vim.keymap.set('n', '<C-Right>', '<cmd>vertical resize -2<cr>')
 -- vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv-gv")
 
 vim.keymap.set('n', '<C-w>e', '<cmd>vsplit<cr>', { desc = 'V[e]rtical split' })
-vim.keymap.set('n', '<C-w>o', '<cmd>split<cr>', { desc = 'V[e]rtical split' })
+vim.keymap.set('n', '<C-w>o', '<cmd>split<cr>', { desc = 'H[o]rizontal split' })
 
 vim.keymap.set('n', '<leader>bd', '<cmd>bp<bar>sp<bar>bn<bar>bd<cr>', { desc = '[D]rop' })
 vim.keymap.set('n', '<leader>bf', require('telescope.builtin').buffers, { desc = '[F]ind' })
