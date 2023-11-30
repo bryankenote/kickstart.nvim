@@ -7,6 +7,14 @@ local on_attach = function(client, bufnr)
   --
   -- In this case, we create a function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
+  local navbuddy = require 'nvim-navbuddy'
+
+  require('lspconfig').clangd.setup {
+    on_attach = function(client, bufnr)
+      navbuddy.attach(client, bufnr)
+    end,
+  }
+
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc

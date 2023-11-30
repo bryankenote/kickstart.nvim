@@ -74,4 +74,6 @@ vim.keymap.set('v', '<leader>/', '<Plug>(comment_toggle_linewise_visual)', { des
 vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '>', '>gv')
 
+vim.keymap.set('n', '<leader>ln', '<cmd>Navbuddy<cr>', { desc = '[N]avbuddy' })
+
 -- vim: ts=2 sts=2 sw=2 et
