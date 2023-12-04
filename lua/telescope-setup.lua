@@ -139,10 +139,10 @@ vim.keymap.set('n', '<leader>gR', require('gitsigns').reset_buffer, { desc = '[R
 vim.keymap.set('n', '<leader>gs', require('gitsigns').stage_hunk, { desc = '[S]tage hunk' })
 vim.keymap.set('n', '<leader>go', require('telescope.builtin').git_status, { desc = '[O]pen changed file' })
 
-vim.keymap.set('n', '<leader>gtb', require('telescope.builtin').git_branches, { desc = 'Checkout [B]ranches' })
-vim.keymap.set('n', '<leader>gtc', require('telescope.builtin').git_bcommits, { desc = 'Checkout buffer [c]ommit' })
-vim.keymap.set('n', '<leader>gtC', require('telescope.builtin').git_commits, { desc = 'Checkout any [C]ommit' })
---vim.keymap.set('v', '<leader>gtr', require('telescope.builtin').git_bcommits_range, { desc = 'Checkout buffer commit in [R]ange' })
-vim.keymap.set('n', '<leader>gta', require('telescope.builtin').git_stash, { desc = '[A]pply stash' })
+vim.keymap.set('n', '<leader>gb', require('telescope.builtin').git_branches, { desc = 'Checkout [B]ranches' })
+vim.keymap.set('n', '<leader>gc', require('telescope.builtin').git_bcommits, { desc = 'Checkout buffer [c]ommit' })
+vim.keymap.set('n', '<leader>gC', require('telescope.builtin').git_commits, { desc = 'Checkout any [C]ommit' })
+--vim.keymap.set('v', '<leader>gg', require('telescope.builtin').git_bcommits_range, { desc = 'Checkout buffer commit in range' })
+vim.keymap.set('n', '<leader>ga', require('telescope.builtin').git_stash, { desc = '[A]pply stash' })
 
 -- vim: ts=2 sts=2 sw=2 et

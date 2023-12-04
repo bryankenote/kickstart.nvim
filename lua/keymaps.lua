@@ -56,9 +56,6 @@ vim.keymap.set('n', '<leader>bf', require('telescope.builtin').buffers, { desc =
 vim.keymap.set('n', '<leader>bs', '<cmd>SessionSave<cr>', { desc = '[S]ave session' })
 vim.keymap.set('n', '<leader>br', '<cmd>Telescope persisted<cr>', { desc = '[R]estore session' })
 
-vim.keymap.set('n', '<leader>ml', '<cmd>Track<cr>', { desc = '[L]ist' })
-vim.keymap.set('n', '<leader>mm', '<cmd>TrackMark<cr>', { desc = '[M]ark' })
-
 vim.keymap.set('n', '<leader>Do', '<cmd>DiffviewOpen<cr>', { desc = 'Open' })
 vim.keymap.set('n', '<leader>Dc', '<cmd>DiffviewClose<cr>', { desc = 'Close' })
 
