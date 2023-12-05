@@ -12,6 +12,13 @@ local on_attach = function(client, bufnr)
   require('lspconfig').clangd.setup {
     on_attach = function(client, bufnr)
       navbuddy.attach(client, bufnr)
+      require('lsp_signature').on_attach {
+        bind = true,
+        handler_opts = {
+          border = 'rounded',
+        },
+        bufnr,
+      }
     end,
   }
 
