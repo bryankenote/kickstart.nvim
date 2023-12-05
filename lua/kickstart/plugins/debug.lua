@@ -18,6 +18,8 @@ return {
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
 
+    'nvim-telescope/telescope-dap.nvim',
+
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
     -- Install the vscode-js-debug adapter
@@ -99,7 +101,7 @@ return {
     }
 
     -- Basic debugging keymaps, feel free to change to your liking!
-    -- vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
+    -- vim.keymap.set('n', '<leader>dr', dap.continue, { desc = 'Run (Start/Continue)' })
     vim.keymap.set('n', '<leader>dr', function()
       if vim.fn.filereadable '.vscode/launch.json' then
         local dap_vscode = require 'dap.ext.vscode'
@@ -111,16 +113,18 @@ return {
         })
       end
       dap.continue()
-    end, { desc = 'run (Start/Continue)' })
+    end, { desc = 'Run (Start/Continue)' })
     vim.keymap.set('n', '<leader>di', dap.step_into, { desc = 'Step Into' })
     vim.keymap.set('n', '<leader>dv', dap.step_over, { desc = 'Step Over' })
     vim.keymap.set('n', '<leader>do', dap.step_out, { desc = 'Step Out' })
     vim.keymap.set('n', '<leader>dT', dap.terminate, { desc = 'Terminate' })
+    vim.keymap.set('n', '<leader>du', dapui.toggle, { desc = 'Toggle UI' })
+    vim.keymap.set('n', '<leader>dl', '<cmd>Telescope dap list_breakpoints<cr>', { desc = 'List Breakpoints' })
     vim.keymap.set('n', '<leader>dc', dap.run_to_cursor, { desc = 'Run to cursor' })
     vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Toggle Breakpoint' })
     vim.keymap.set('n', '<leader>dB', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-    end, { desc = 'Set Breakpoint' })
+    end, { desc = 'Conditional Breakpoint' })
 
     -- Dap adapter setup
     dap.adapters.netcoredbg = {
