@@ -50,6 +50,6 @@ vim.opt.so = 16
 -- vim.opt.list = true
 -- vim.opt.listchars:append("trail:·")
 -- vim.opt.listchars:append("lead:·")
-vim.opt.fillchars = { eob = ' ' }
+vim.opt.fillchars:append { eob = ' ', diff = ' ', fold = ' ' }
 vim.opt.diffopt:append { 'filler', 'iwhite', 'vertical' }
 -- vim: ts=2 sts=2 sw=2 et
