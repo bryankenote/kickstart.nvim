@@ -233,8 +233,8 @@ return {
     }
 
     local icons = require 'icons'
-    vim.fn.sign_define('DapBreakpoint', { text = '●', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
-    vim.fn.sign_define('DapBreakpointRejected', { text = '●', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
+    vim.fn.sign_define('DapBreakpoint', { text = icons.ui.Circle, texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
+    vim.fn.sign_define('DapBreakpointRejected', { text = icons.ui.Circle, texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
     vim.fn.sign_define('DapBreakpointStopped', { text = icons.BoldArrowRight, texthl = 'DiagnosticSignWarn', linehl = '', numhl = '' })
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
     vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
