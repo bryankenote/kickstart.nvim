@@ -30,7 +30,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+  nmap('<leader>lr', vim.lsp.buf.rename, '[R]ename')
   -- nmap('<leader>la', vim.lsp.buf.code_action, 'Code [A]ction')
   vim.keymap.set({ 'v', 'n' }, '<leader>la', require('actions-preview').code_actions, { desc = 'Code [A]ction' })
 
