@@ -28,10 +28,6 @@ local on_attach = function(client, bufnr)
     end
 
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-
-    if client.server_capabilities.signatureHelpProvider then
-      require('lsp-overloads').setup(client, {})
-    end
   end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
