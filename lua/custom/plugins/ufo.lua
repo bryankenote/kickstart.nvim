@@ -17,7 +17,7 @@ return {
       end,
     },
   },
-  event = 'BufReadPost',
+  event = 'VeryLazy',
   opts = {
     provider_selector = function()
       return { 'treesitter', 'indent' }
