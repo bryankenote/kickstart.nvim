@@ -22,9 +22,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.keymap.set('n', '<leader>Lc', '<cmd>e ~/.config/nvim<cr>', { desc = 'Edit [c]onfig' })
 
 -- Diagnostic keymaps
-vim.keymap.set('n', 'dk', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', 'dj', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '[e', [[<cmd>lua vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })<cr>]], { desc = 'Go to previous error' })
+vim.keymap.set('n', ']e', [[<cmd>lua vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })<cr>]], { desc = 'Go to next error' })
+vim.keymap.set('n', '[w', [[<cmd>lua vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.WARN })<cr>]], { desc = 'Go to previous warning' })
+vim.keymap.set('n', ']w', [[<cmd>lua vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.WARN })<cr>]], { desc = 'Go to next warning' })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = 'Open floating diagnostic' })
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- vim.keymap.set('n', '<C-w>e', '<cmd>vsplit<cr>', { silent = true })

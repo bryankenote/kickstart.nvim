@@ -131,6 +131,8 @@ vim.keymap.set('n', '<leader>sR', require('telescope.builtin').registers, { desc
 vim.keymap.set('n', '<leader>sC', require('telescope.builtin').commands, { desc = '[C]ommands' })
 vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[K]eymaps' })
 
+vim.keymap.set('n', ']g', "<cmd>lua require 'gitsigns'.next_hunk({ navigation_message = false })<cr>", { desc = 'Next Hunk' })
+vim.keymap.set('n', '[g', "<cmd>lua require 'gitsigns'.prev_hunk({ navigation_message = false })<cr>", { desc = 'Prev Hunk' })
 vim.keymap.set('n', '<leader>gj', "<cmd>lua require 'gitsigns'.next_hunk({ navigation_message = false })<cr>", { desc = 'Next Hunk' })
 vim.keymap.set('n', '<leader>gk', "<cmd>lua require 'gitsigns'.prev_hunk({ navigation_message = false })<cr>", { desc = 'Prev Hunk' })
 vim.keymap.set('n', '<leader>gl', require('gitsigns').blame_line, { desc = '[B]lame' })
