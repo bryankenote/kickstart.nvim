@@ -1,5 +1,5 @@
 -- [[ Setting options ]]
--- See `:help vim.o`
+
 -- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
@@ -50,6 +50,10 @@ vim.opt.so = 16
 -- vim.opt.list = true
 -- vim.opt.listchars:append("trail:·")
 -- vim.opt.listchars:append("lead:·")
-vim.opt.fillchars:append { eob = ' ', diff = ' ', fold = ' ' }
 vim.opt.diffopt:append { 'filler', 'iwhite', 'vertical' }
+vim.opt.fillchars:append { eob = ' ', diff = ' ', fold = ' ', foldopen = '', foldsep = ' ', foldclose = '' }
+vim.o.foldcolumn = '1' -- '0' is not bad
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
 -- vim: ts=2 sts=2 sw=2 et
