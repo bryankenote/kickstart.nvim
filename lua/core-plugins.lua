@@ -22,7 +22,7 @@ require('lazy').setup({
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
+      { 'williamboman/mason.nvim', opts = { ui = { border = 'rounded' } } },
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
@@ -63,6 +63,8 @@ require('lazy').setup({
       vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
         border = 'rounded',
       })
+
+      require('lspconfig.ui.windows').default_options.border = 'rounded'
     end,
     opts = {},
   },
@@ -501,6 +503,8 @@ require('lazy').setup({
     config = function()
       require('vscode').setup {
         transparent = true,
+        disable_nvimtree_bg = true,
+        italic_comments = true,
       }
       require('vscode').load()
     end,
@@ -607,6 +611,6 @@ require('lazy').setup({
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   { import = 'custom.plugins' },
-}, {})
+}, { ui = { border = 'rounded' } })
 
 -- vim: ts=2 sts=2 sw=2 et
