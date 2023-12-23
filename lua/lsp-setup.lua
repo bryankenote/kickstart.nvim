@@ -82,6 +82,7 @@ local servers = {
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
+  htmx = { filetypes = { 'templ' } },
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
