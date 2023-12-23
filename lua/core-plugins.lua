@@ -498,15 +498,65 @@ require('lazy').setup({
     },
   },
 
+  -- {
+  --   'rebelot/kanagawa.nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     require('kanagawa').setup {
+  --       -- transparent = true,
+  --       colors = {
+  --         theme = {
+  --           all = {
+  --             ui = {
+  --               bg_gutter = 'none',
+  --               float = {
+  --                 bg = 'none',
+  --               },
+  --             },
+  --           },
+  --         },
+  --       },
+  --       overrides = function(colors)
+  --         local theme = colors.theme
+  --         return {
+  --           NormalFloat = { bg = 'none' },
+  --           FloatBorder = { bg = 'none' },
+  --           FloatTitle = { bg = 'none' },
+  --           -- Save an hlgroup with dark background and dimmed foreground
+  --           -- so that you can use it where your still want darker windows.
+  --           -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
+  --           NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+  --           -- Popular plugins that open floats will link to NormalFloat by default;
+  --           -- set their background accordingly if you wish to keep them dark and borderless
+  --           LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+  --           MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+  --         }
+  --       end,
+  --     }
+  --     vim.cmd 'colorscheme kanagawa-wave'
+  --     vim.api.nvim_set_hl(0, 'IlluminatedWordText', { link = 'Visual' })
+  --     vim.api.nvim_set_hl(0, 'IlluminatedWordRead', { link = 'Visual' })
+  --     vim.api.nvim_set_hl(0, 'IlluminatedWordWrite', { link = 'Visual' })
+  --   end,
+  -- },
+
   {
     'Mofiqul/vscode.nvim',
+    priority = 1000,
     config = function()
+      local c = require('vscode.colors').get_colors()
       require('vscode').setup {
-        transparent = true,
-        disable_nvimtree_bg = true,
+        transparent = false,
         italic_comments = true,
+        disable_nvimtree_bg = true,
+        group_overrides = {
+          NormalFloat = { fg = c.vscFront, bg = 'NONE' },
+        },
       }
       require('vscode').load()
+      vim.api.nvim_set_hl(0, 'IlluminatedWordText', { link = 'Visual' })
+      vim.api.nvim_set_hl(0, 'IlluminatedWordRead', { link = 'Visual' })
+      vim.api.nvim_set_hl(0, 'IlluminatedWordWrite', { link = 'Visual' })
     end,
   },
 
@@ -519,8 +569,8 @@ require('lazy').setup({
       options = {
         icons_enabled = true,
         theme = 'vscode',
-        component_separators = '|',
-        section_separators = '',
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
         globalstatus = true,
       },
     },
