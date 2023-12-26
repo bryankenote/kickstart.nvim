@@ -81,6 +81,9 @@ require('telescope').setup {
     keymaps = {},
   },
   pickers = {
+    colorscheme = {
+      enable_preview = true,
+    },
     lsp_references = {
       show_line = false,
     },
@@ -128,7 +131,8 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 vim.keymap.set('n', '<leader>sl', require('telescope.builtin').resume, { desc = 'resume [L]ast' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').oldfiles, { desc = '[R]ecent' })
 vim.keymap.set('n', '<leader>sR', require('telescope.builtin').registers, { desc = '[R]egisters' })
-vim.keymap.set('n', '<leader>sC', require('telescope.builtin').commands, { desc = '[C]ommands' })
+vim.keymap.set('n', '<leader>sc', require('telescope.builtin').commands, { desc = '[C]ommands' })
+vim.keymap.set('n', '<leader>sC', '<cmd>Telescope colorscheme<cr>', { desc = '[C]olorschemes' })
 vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[K]eymaps' })
 
 vim.keymap.set('n', ']g', "<cmd>lua require 'gitsigns'.next_hunk({ navigation_message = false })<cr>", { desc = 'Next Hunk' })
