@@ -74,5 +74,20 @@ require 'filetypes'
 
 require 'autocmds'
 
+---@class parser_config
+local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+parser_config.facility = {
+  install_info = {
+    url = '~/parsers/tree-sitter-facility', -- local path or git repo
+    files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c or src/scanner.cc
+    -- optional entries:
+    branch = 'events', -- default branch in case of git repo if different from master
+    generate_requires_npm = false, -- if stand-alone parser without npm dependencies
+    requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+  },
+  filetype = 'fsd', -- if filetype does not match the parser name
+}
+vim.treesitter.language.register('facility', 'fsd') -- the someft filetype will use the python parser and queries.
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -498,6 +498,16 @@ require('lazy').setup({
     },
   },
 
+  -- {
+  --   'tanvirtin/vgit.nvim',
+  --   requires = {
+  --     'nvim-lua/plenary.nvim',
+  --   },
+  --   config = function()
+  --     require('vgit').setup()
+  --   end,
+  -- },
+
   {
     'rebelot/kanagawa.nvim',
     priority = 1000,

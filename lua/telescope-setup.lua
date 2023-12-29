@@ -144,6 +144,7 @@ vim.keymap.set('n', '<leader>gp', require('gitsigns').preview_hunk, { desc = '[P
 vim.keymap.set('n', '<leader>gr', require('gitsigns').reset_hunk, { desc = '[R]eset hunk' })
 vim.keymap.set('n', '<leader>gR', require('gitsigns').reset_buffer, { desc = '[R]eset buffer' })
 vim.keymap.set('n', '<leader>gs', require('gitsigns').stage_hunk, { desc = '[S]tage hunk' })
+
 vim.keymap.set('n', '<leader>go', require('telescope.builtin').git_status, { desc = '[O]pen changed file' })
 
 vim.keymap.set('n', '<leader>gb', require('telescope.builtin').git_branches, { desc = 'Checkout [B]ranches' })

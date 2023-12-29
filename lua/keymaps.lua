@@ -77,4 +77,6 @@ vim.keymap.set('v', '>', '>gv')
 
 vim.keymap.set('n', '<leader>ln', '<cmd>Navbuddy<cr>', { desc = '[N]avbuddy' })
 
+vim.keymap.set('n', '<leader>Ti', '<cmd>Inspect<cr>', { desc = '[I]nspect' })
+vim.keymap.set('n', '<leader>Tt', '<cmd>InspectTree<cr>', { desc = 'Inspect [t]ree' })
 -- vim: ts=2 sts=2 sw=2 et
