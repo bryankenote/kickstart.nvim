@@ -49,8 +49,8 @@ vim.keymap.set('n', '<C-Right>', '<cmd>vertical resize -2<cr>')
 -- vscode style move lines
 -- vim.keymap.set('n', '<A-j>', '<cmd>m .+1<cr>==')
 -- vim.keymap.set('n', '<A-k>', '<cmd>m .-2<cr>==')
--- vim.keymap.set('v', '<A-j>', ":m '>+1<cr>gv-gv")
--- vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv-gv")
+vim.keymap.set('v', '<S-j>', ":m '>+1<cr>gv-gv")
+vim.keymap.set('v', '<S-k>', ":m '<-2<CR>gv-gv")
 
 vim.keymap.set('n', '<C-w>e', '<cmd>vsplit<cr>', { desc = 'V[e]rtical split' })
 vim.keymap.set('n', '<C-w>o', '<cmd>split<cr>', { desc = 'H[o]rizontal split' })
