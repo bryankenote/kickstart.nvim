@@ -47,13 +47,17 @@ vim.opt.autoindent = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.so = 16
--- vim.opt.list = true
--- vim.opt.listchars:append("trail:·")
--- vim.opt.listchars:append("lead:·")
-vim.opt.diffopt:append { 'filler', 'iwhite', 'vertical' }
+
+vim.opt.list = true
+vim.opt.listchars:append { lead = '·', trail = '·' }
+
 vim.opt.fillchars:append { eob = ' ', diff = ' ', fold = ' ', foldopen = '', foldsep = ' ', foldclose = '' }
+
+vim.opt.diffopt:append { 'filler', 'iwhite', 'vertical' }
+
 vim.o.foldcolumn = '1' -- '0' is not bad
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
+
 -- vim: ts=2 sts=2 sw=2 et
