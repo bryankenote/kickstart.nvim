@@ -538,16 +538,27 @@ require('lazy').setup({
   },
 
   {
+    'bluz71/vim-nightfly-colors',
+    name = 'nightfly',
+    lazy = false,
+    priority = 1000,
+  },
+
+  {
     'Mofiqul/vscode.nvim',
     priority = 1000,
     config = function()
       local c = require('vscode.colors').get_colors()
       require('vscode').setup {
+        style = 'dark',
         transparent = false,
         italic_comments = true,
         disable_nvimtree_bg = true,
         group_overrides = {
           NormalFloat = { fg = c.vscFront, bg = 'NONE' },
+          Comment = { fg = c.vscGray, bg = 'NONE', italic = true },
+          SpecialComment = { fg = c.vscGray, bg = 'NONE', italic = true },
+          ['@comment'] = { fg = c.vscGray, bg = 'NONE', italic = true },
         },
       }
       require('vscode').load()

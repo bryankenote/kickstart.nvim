@@ -51,7 +51,7 @@ vim.opt.so = 16
 vim.opt.list = true
 vim.opt.listchars:append { lead = '·', trail = '·' }
 
-vim.opt.fillchars:append { eob = ' ', diff = ' ', fold = ' ', foldopen = '', foldsep = ' ', foldclose = '' }
+vim.opt.fillchars:append { eob = ' ', diff = '╱', fold = ' ', foldopen = '', foldsep = ' ', foldclose = '' }
 
 vim.opt.diffopt:append { 'filler', 'iwhite', 'vertical' }
 
