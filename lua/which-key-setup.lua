@@ -88,6 +88,7 @@ which_key.register {
   ['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
   ['<leader>t'] = { name = '[T]est', _ = 'which_key_ignore' },
   ['<leader>L'] = { name = 'Neovim', _ = 'which_key_ignore' },
+  ['<leader><Tab>'] = { name = 'Tabs', _ = 'which_key_ignore' },
   ['<C-w>'] = { name = 'Window', _ = 'which_key_ignore' },
   ['<C-w>c'] = { name = '[C]lose', _ = 'which_key_ignore' },
   -- ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
