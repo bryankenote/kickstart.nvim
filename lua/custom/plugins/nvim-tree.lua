@@ -14,6 +14,7 @@ return {
       end
 
       api.config.mappings.default_on_attach(bufnr)
+      vim.keymap.set('n', '<Right>', api.node.open.edit, opts 'Open')
       vim.keymap.set('n', 'l', api.node.open.edit, opts 'Open')
       vim.keymap.set('n', 'o', api.node.open.edit, opts 'Open')
       vim.keymap.set('n', '<CR>', api.node.open.edit, opts 'Open')

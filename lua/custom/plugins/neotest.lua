@@ -4,6 +4,7 @@ return {
     'nvim-lua/plenary.nvim',
     'antoinemadec/FixCursorHold.nvim',
     'Issafalcon/neotest-dotnet',
+    'nvim-neotest/nvim-nio',
   },
   config = function()
     local neotest = require 'neotest'
