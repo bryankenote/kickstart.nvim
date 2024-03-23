@@ -27,6 +27,7 @@
 	       (argument
 		 (string_literal
 		   (string_literal_fragment) @injection.content
+		   ; (#set! injection.include-children)
 		   (#set! injection.language "sql")))))
 
 (invocation_expression 
@@ -37,6 +38,7 @@
 	       (argument
 		 (interpolated_string_expression
 		   (interpolated_string_text) @injection.content
+		   ; (#set! injection.include-children)
 		   (#set! injection.language "sql")))))
 
 (invocation_expression
@@ -47,4 +49,5 @@
 	       (argument
 		 (interpolated_string_expression
 		   (interpolated_verbatim_string_text) @injection.content
+		   ; (#set! injection.include-children)
 		   (#set! injection.language "sql")))))
