@@ -35,6 +35,11 @@ return {
 
     require('diffview').setup {
       enhanced_diff_hl = true,
+      view = {
+        merge_tool = {
+          layout = 'diff3_mixed',
+        },
+      },
       hooks = {
         ---@param view StandardView
         view_opened = function(view)
