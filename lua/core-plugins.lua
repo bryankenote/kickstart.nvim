@@ -435,34 +435,34 @@ require('lazy').setup({
     opts = {
       signs = {
         add = {
-          hl = 'GitSignsAdd',
+          -- hl = 'GitSignsAdd',
           text = icons.ui.BoldLineLeft,
-          numhl = 'GitSignsAddNr',
-          linehl = 'GitSignsAddLn',
+          -- numhl = 'GitSignsAddNr',
+          -- linehl = 'GitSignsAddLn',
         },
         change = {
-          hl = 'GitSignsChange',
+          -- hl = 'GitSignsChange',
           text = icons.ui.BoldLineLeft,
-          numhl = 'GitSignsChangeNr',
-          linehl = 'GitSignsChangeLn',
+          -- numhl = 'GitSignsChangeNr',
+          -- linehl = 'GitSignsChangeLn',
         },
         delete = {
-          hl = 'GitSignsDelete',
+          -- hl = 'GitSignsDelete',
           text = icons.ui.Triangle,
-          numhl = 'GitSignsDeleteNr',
-          linehl = 'GitSignsDeleteLn',
+          -- numhl = 'GitSignsDeleteNr',
+          -- linehl = 'GitSignsDeleteLn',
         },
         topdelete = {
-          hl = 'GitSignsDelete',
+          -- hl = 'GitSignsDelete',
           text = icons.ui.Triangle,
-          numhl = 'GitSignsDeleteNr',
-          linehl = 'GitSignsDeleteLn',
+          -- numhl = 'GitSignsDeleteNr',
+          -- linehl = 'GitSignsDeleteLn',
         },
         changedelete = {
-          hl = 'GitSignsChange',
+          -- hl = 'GitSignsChange',
           text = icons.ui.BoldLineLeft,
-          numhl = 'GitSignsChangeNr',
-          linehl = 'GitSignsChangeLn',
+          -- numhl = 'GitSignsChangeNr',
+          -- linehl = 'GitSignsChangeLn',
         },
       },
       signcolumn = true,
@@ -542,6 +542,9 @@ require('lazy').setup({
     name = 'nightfly',
     lazy = false,
     priority = 1000,
+    config = function()
+      vim.g.nightflyNormalFloat = true
+    end,
   },
 
   {
@@ -649,7 +652,7 @@ require('lazy').setup({
   {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
-    event = { 'BufReadPre', 'BufNewFile' },
+    -- event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },

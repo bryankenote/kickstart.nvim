@@ -60,9 +60,6 @@ vim.keymap.set('n', '<leader>bf', require('telescope.builtin').buffers, { desc =
 vim.keymap.set('n', '<leader>bs', '<cmd>SessionSave<cr>', { desc = '[S]ave session' })
 vim.keymap.set('n', '<leader>br', '<cmd>Telescope persisted<cr>', { desc = '[R]estore session' })
 
-vim.keymap.set('n', '<leader>Do', '<cmd>DiffviewOpen<cr>', { desc = 'Open' })
-vim.keymap.set('n', '<leader>Dc', '<cmd>DiffviewClose<cr>', { desc = 'Close' })
-
 vim.keymap.set('n', '<leader>l>', '<cmd>LspStart<cr>', { desc = 'Enable lsp' })
 vim.keymap.set('n', '<leader>l<', '<cmd>LspStop<cr>', { desc = 'Disable lsp' })
 
@@ -71,6 +68,7 @@ vim.keymap.set('n', '<leader>q', '<cmd>confirm q<cr>', { desc = '[Q]uit' })
 
 vim.keymap.set('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)', { desc = 'Comment toggle line' })
 vim.keymap.set('v', '<leader>/', '<Plug>(comment_toggle_linewise_visual)', { desc = 'Comment toggle lines' })
+vim.keymap.set('v', '<leader>s', "<cmd>'<'>Silicon<cr>", { desc = 'Screenshot Code' })
 
 vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '>', '>gv')

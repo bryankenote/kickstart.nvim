@@ -7,6 +7,10 @@ local on_attach = function(client, bufnr)
   --
   -- In this case, we create a function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
+  -- if client.server_capabilities.signatureHelpProvider then
+  --   require('lsp-overloads').setup(client, {})
+  -- end
+
   local navbuddy = require 'nvim-navbuddy'
 
   require('lspconfig').clangd.setup {
@@ -37,7 +41,7 @@ local on_attach = function(client, bufnr)
   nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-  -- nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+  nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
   nmap('<leader>ls', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
   nmap('<leader>lS', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
   nmap('<leader>ld', "<cmd>lua require 'telescope.builtin'.diagnostics({ bufnr = 0 })<cr>", 'Document [D]iagnostics')
@@ -45,7 +49,13 @@ local on_attach = function(client, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('J', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('<M-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+
+  if vim.lsp.inlay_hint then
+    nmap('<leader>lh', function()
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+    end, 'Inlay [H]int')
+  end
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -79,7 +89,37 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
+  tsserver = {
+    typescript = {
+      inlayHints = {
+        -- You can set this to 'all' or 'literals' to enable more hints
+        includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all'
+        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      },
+    },
+    javascript = {
+      inlayHints = {
+        -- You can set this to 'all' or 'literals' to enable more hints
+        includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all'
+        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      },
+    },
+  },
+  csharp_ls = {
+    hint = { enable = true },
+  },
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   htmx = { filetypes = { 'templ' } },
@@ -89,6 +129,7 @@ local servers = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
+      hint = { enable = true },
     },
   },
 }
@@ -116,9 +157,23 @@ mason_lspconfig.setup_handlers {
         settings = servers[server_name],
         filetypes = (servers[server_name] or {}).filetypes,
         enable_roslyn_analyzers = true,
-        -- handlers = {
-        --   ['textDocument/definition'] = require('omnisharp_extended').handler,
-        -- },
+        handlers = {
+          ['textDocument/definition'] = require('omnisharp_extended').definition_handler,
+          ['textDocument/typeDefinition'] = require('omnisharp_extended').type_definition_handler,
+          ['textDocument/references'] = require('omnisharp_extended').references_handler,
+          ['textDocument/implementation'] = require('omnisharp_extended').implementation_handler,
+        },
+      }
+    elseif server_name == 'csharp_ls' then
+      require('lspconfig')[server_name].setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = servers[server_name],
+        filetypes = (servers[server_name] or {}).filetypes,
+        handlers = {
+          ['textDocument/definition'] = require('csharpls_extended').handler,
+          ['textDocument/typeDefinition'] = require('csharpls_extended').handler,
+        },
       }
     else
       require('lspconfig')[server_name].setup {
