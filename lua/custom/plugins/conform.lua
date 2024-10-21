@@ -20,6 +20,7 @@ return {
         graphql = { 'prettier' },
         lua = { 'stylua' },
         python = { 'isort', 'black' },
+        terraform = { 'prettier' },
       },
       format_on_save = function(bufnr)
         -- Disable with a global or buffer-local variable

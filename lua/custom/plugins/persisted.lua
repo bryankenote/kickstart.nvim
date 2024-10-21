@@ -1,8 +1,10 @@
 return {
   'olimorris/persisted.nvim',
+  lazy = false,
   config = function()
     require('persisted').setup {
-      autosave = true,
+      autostart = true,
+      -- autosave = true,
       autoload = true,
       use_git_branch = true,
       default_branch = 'master',

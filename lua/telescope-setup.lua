@@ -1,73 +1,15 @@
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
-local function custom_path_display(opts, path)
-  local cwd = vim.loop.cwd()
-
-  if cwd == nil or not cwd:match 'AcademicServices' then
-    return path
-  end
-
-  local segments = vim.split(path, '/')
-
-  if #segments < 2 then
-    return path
-  end
-
-  local segment = segments[2]
-
-  local display_name = ''
-  if segment ~= nil then
-    if string.find(segment, 'Faithlife.AcademicDesk.Client') then
-      display_name = '[Desk.C]'
-    elseif string.find(segment, 'Faithlife.AcademicDesk.Server') then
-      display_name = '[Desk.S]'
-    elseif string.find(segment, 'Faithlife.AcademicPortal.Client') then
-      display_name = '[Portal.C]'
-    elseif string.find(segment, 'Faithlife.AcademicPortal.Server') then
-      display_name = '[Portal.S]'
-    elseif string.find(segment, 'Faithlife.AcademicServices.AcademicApi.v1.WebApi') then
-      display_name = '[WebApi]'
-    elseif string.find(segment, 'Faithlife.AcademicServices.Subscriber') then
-      display_name = '[Subscriber]'
-    elseif string.find(segment, 'Faithlife.AcademicServices.Services') then
-      display_name = '[Services]'
-    elseif string.find(segment, 'Faithlife.AcademicServices.Scheduler') then
-      display_name = '[Scheduler]'
-    elseif string.find(segment, 'Faithlife.AcademicServices.JobConsole') then
-      display_name = '[JobConsole]'
-    elseif string.find(segment, 'Faithlife.AcademicServices.Data.Entities') then
-      display_name = '[Entities]'
-    elseif string.find(segment, 'Faithlife.AcademicServices.Data') then
-      display_name = '[Data]'
-    elseif string.find(segment, 'Faithlife.AcademicServices.IntegrationTests') then
-      display_name = '[IntegrationTests]'
-    elseif string.find(segment, 'Faithlife.AcademicServices.AcademicApi.Tests') then
-      display_name = '[AcademicApi.Tests]'
-    elseif string.find(segment, 'Faithlife.AcademicServices.LtiProvider.v1.Web.Tests') then
-      display_name = '[LtiProvider.Tests]'
-    end
-  end
-  if display_name == '' or segment == nil then
-    return path
-  end
-
-  -- Get the remaining path after the segment
-  local index = string.find(path, segment) + #segment + 1
-  local sub_path = string.sub(path, index)
-
-  -- Get path past "/src" if possible
-  sub_path = vim.fn.substitute(sub_path, '^src', '', '')
-
-  -- Return the formatted path
-  return display_name .. ' ' .. sub_path
-end
-
 local _actions = require 'telescope.actions'
 -- local _persisted_actions = require 'telescope._extensions.persisted.actions'
 require('telescope').setup {
   defaults = {
     show_dotfiles = true,
-    custom_path_display = custom_path_display,
+    path_display = {
+      filename_first = {
+        reverse_directories = false,
+      },
+    },
     wrap_results = true,
     layout_strategy = 'horizontal',
     layout_config = {
