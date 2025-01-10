@@ -38,10 +38,20 @@ local on_attach = function(client, bufnr)
   -- nmap('<leader>la', vim.lsp.buf.code_action, 'Code [A]ction')
   vim.keymap.set({ 'v', 'n' }, '<leader>la', require('actions-preview').code_actions, { desc = 'Code [A]ction' })
 
-  nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-  nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+  if client.name == 'omnisharp' then
+    nmap('gd', require('omnisharp_extended').lsp_definitions, '[G]oto [D]efinition')
+    -- nmap('gr', require('omnisharp_extended').lsp_references, '[G]oto [R]eferences')
+    nmap('gI', require('omnisharp_extended').lsp_implementations, '[G]oto [I]mplementation')
+    nmap('<leader>D', require('omnisharp_extended').lsp_type_definitions, 'Type [D]efinition')
+  elseif client.name == 'csharp_ls' then
+    nmap('gd', require('csharpls_extended').lsp_definitions, '[G]oto [D]efinition')
+    nmap('<leader>D', require('csharpls_extended').lsp_type_definitions, 'Type [D]efinition')
+  else
+    nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+    nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+    nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+    nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+  end
   nmap('<leader>ls', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
   nmap('<leader>lS', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
   nmap('<leader>ld', "<cmd>lua require 'telescope.builtin'.diagnostics({ bufnr = 0 })<cr>", 'Document [D]iagnostics')
@@ -117,9 +127,9 @@ local servers = {
       },
     },
   },
-  csharp_ls = {
-    hint = { enable = true },
-  },
+  -- csharp_ls = {
+  --   hint = { enable = true },
+  -- },
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   htmx = { filetypes = { 'templ' } },
@@ -157,12 +167,6 @@ mason_lspconfig.setup_handlers {
         settings = servers[server_name],
         filetypes = (servers[server_name] or {}).filetypes,
         enable_roslyn_analyzers = true,
-        handlers = {
-          ['textDocument/definition'] = require('omnisharp_extended').definition_handler,
-          ['textDocument/typeDefinition'] = require('omnisharp_extended').type_definition_handler,
-          ['textDocument/references'] = require('omnisharp_extended').references_handler,
-          ['textDocument/implementation'] = require('omnisharp_extended').implementation_handler,
-        },
       }
     elseif server_name == 'csharp_ls' then
       require('lspconfig')[server_name].setup {
@@ -170,10 +174,10 @@ mason_lspconfig.setup_handlers {
         on_attach = on_attach,
         settings = servers[server_name],
         filetypes = (servers[server_name] or {}).filetypes,
-        handlers = {
-          ['textDocument/definition'] = require('csharpls_extended').handler,
-          ['textDocument/typeDefinition'] = require('csharpls_extended').handler,
-        },
+        -- handlers = {
+        --   ['textDocument/definition'] = require('csharpls_extended').handler,
+        --   ['textDocument/typeDefinition'] = require('csharpls_extended').handler,
+        -- },
       }
     else
       require('lspconfig')[server_name].setup {

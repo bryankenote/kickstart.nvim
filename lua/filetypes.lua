@@ -11,5 +11,6 @@ vim.filetype.add {
     ['argus.config'] = 'xml',
     ['Directory.Build.props'] = 'xml',
     ['Directory.Build.targets'] = 'xml',
+    ['Directory.Packages.props'] = 'xml',
   },
 }

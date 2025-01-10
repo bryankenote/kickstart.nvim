@@ -31,8 +31,6 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = 'Open floating diagnostic' })
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
--- vim.keymap.set('n', '<C-w>e', '<cmd>vsplit<cr>', { silent = true })
--- vim.keymap.set('n', '<C-w>o', '<cmd>split<cr>', { silent = true })
 vim.keymap.set('n', '<C-d>', '<C-d>M', { silent = true })
 vim.keymap.set('n', '<C-u>', '<C-u>M', { silent = true })
 
