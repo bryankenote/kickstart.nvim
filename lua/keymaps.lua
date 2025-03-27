@@ -21,6 +21,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.keymap.set('n', '<leader>Lc', '<cmd>e ~/.config/nvim<cr>', { desc = 'Edit [c]onfig' })
 
+-- Prevent certain motions from adding to the jumplist
+vim.keymap.set('n', '{', ':<C-u>execute "keepjumps norm! " . v:count1 . "{"<CR>')
+vim.keymap.set('n', '}', ':<C-u>execute "keepjumps norm! " . v:count1 . "}"<CR>')
+vim.keymap.set('n', 'H', ':<C-u>execute "keepjumps norm! " . v:count1 . "H"<CR>')
+vim.keymap.set('n', 'L', ':<C-u>execute "keepjumps norm! " . v:count1 . "L"<CR>')
+vim.keymap.set('n', 'M', ':<C-u>execute "keepjumps norm! " . v:count1 . "M"<CR>')
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '[e', [[<cmd>lua vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })<cr>]], { desc = 'Go to previous error' })
 vim.keymap.set('n', ']e', [[<cmd>lua vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })<cr>]], { desc = 'Go to next error' })
@@ -31,8 +38,8 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = 'Open floating diagnostic' })
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
-vim.keymap.set('n', '<C-d>', '<C-d>M', { silent = true })
-vim.keymap.set('n', '<C-u>', '<C-u>M', { silent = true })
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { silent = true })
 
 vim.keymap.set('n', '<C-h>', '<C-w>h')
 vim.keymap.set('n', '<C-j>', '<C-w>j')

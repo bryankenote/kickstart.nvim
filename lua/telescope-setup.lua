@@ -80,6 +80,7 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').registers, { desc
 vim.keymap.set('n', '<leader>sc', require('telescope.builtin').commands, { desc = '[C]ommands' })
 vim.keymap.set('n', '<leader>sC', require('telescope.builtin').colorscheme, { desc = '[C]olorschemes' })
 vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[K]eymaps' })
+vim.keymap.set('n', '<leader>sj', require('telescope.builtin').jumplist, { desc = '[J]umplist' })
 
 vim.keymap.set('n', ']g', "<cmd>lua require 'gitsigns'.next_hunk({ navigation_message = false })<cr>", { desc = 'Next Hunk' })
 vim.keymap.set('n', '[g', "<cmd>lua require 'gitsigns'.prev_hunk({ navigation_message = false })<cr>", { desc = 'Prev Hunk' })

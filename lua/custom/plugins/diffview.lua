@@ -1,5 +1,5 @@
 return {
-  'sindrets/diffview.nvim',
+  'bryankenote/diffview.nvim',
   event = 'BufRead',
   dependencies = { 'Mofiqul/vscode.nvim' },
   config = function()
@@ -32,6 +32,10 @@ return {
     -- vim.cmd([[highlight DiffAddText gui=none guifg=none guibg=]] .. colors.vscDiffGreenLight)
     vim.cmd [[highlight DiffAddText gui=none guifg=none guibg=#4f612c]]
     -- vim.cmd [[highlight DiffAddText gui=none guifg=none guibg=#1C5458]]
+
+    vim.keymap.set('n', '<leader>gdo', '<cmd>DiffviewOpen<cr>', { desc = 'DiffviewOpen' })
+    vim.keymap.set('n', '<leader>gdc', '<cmd>DiffviewClose<cr>', { desc = 'DiffviewClose' })
+    vim.keymap.set('n', '<leader>gdh', '<cmd>DiffviewFileHistory<cr>', { desc = 'History' })
 
     require('diffview').setup {
       enhanced_diff_hl = true,
