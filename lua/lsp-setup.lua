@@ -40,12 +40,15 @@ local on_attach = function(client, bufnr)
 
   if client.name == 'omnisharp' then
     nmap('gd', require('omnisharp_extended').lsp_definitions, '[G]oto [D]efinition')
-    -- nmap('gr', require('omnisharp_extended').lsp_references, '[G]oto [R]eferences')
     nmap('gI', require('omnisharp_extended').lsp_implementations, '[G]oto [I]mplementation')
     nmap('<leader>D', require('omnisharp_extended').lsp_type_definitions, 'Type [D]efinition')
+    -- nmap('gr', require('omnisharp_extended').lsp_references, '[G]oto [R]eferences')
+    nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   elseif client.name == 'csharp_ls' then
     nmap('gd', require('csharpls_extended').lsp_definitions, '[G]oto [D]efinition')
+    nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
     nmap('<leader>D', require('csharpls_extended').lsp_type_definitions, 'Type [D]efinition')
+    nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   else
     nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
     nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
