@@ -160,38 +160,38 @@ local mason_lspconfig = require 'mason-lspconfig'
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
   automatic_installation = false,
+  automatic_enable = true, -- Automatically enable installed servers
 }
 
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    if server_name == 'omnisharp' then
-      require('lspconfig')[server_name].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        settings = servers[server_name],
-        filetypes = (servers[server_name] or {}).filetypes,
-        enable_roslyn_analyzers = true,
-      }
-    elseif server_name == 'csharp_ls' then
-      require('lspconfig')[server_name].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        settings = servers[server_name],
-        filetypes = (servers[server_name] or {}).filetypes,
-        -- handlers = {
-        --   ['textDocument/definition'] = require('csharpls_extended').handler,
-        --   ['textDocument/typeDefinition'] = require('csharpls_extended').handler,
-        -- },
-      }
-    else
-      require('lspconfig')[server_name].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        settings = servers[server_name],
-        filetypes = (servers[server_name] or {}).filetypes,
-      }
-    end
-  end,
-}
+-- Configure LSP servers using vim.lsp.config()
+for server_name, server_config in pairs(servers) do
+  if server_name == 'omnisharp' then
+    vim.lsp.config(server_name, {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = server_config,
+      filetypes = server_config.filetypes,
+      enable_roslyn_analyzers = server_config.enable_roslyn_analyzers, -- For omnisharp
+    })
+  elseif server_name == 'csharp_ls' then
+    vim.lsp.config('csharp_ls', {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = servers.csharp_ls,
+      filetypes = servers.csharp_ls.filetypes,
+      handlers = {
+        ['textDocument/definition'] = require('csharpls_extended').handler,
+        ['textDocument/typeDefinition'] = require('csharpls_extended').handler,
+      },
+    })
+  else
+    vim.lsp.config(server_name, {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = server_config,
+      filetypes = server_config.filetypes,
+    })
+  end
+end
 
 -- vim: ts=2 sts=2 sw=2 et
