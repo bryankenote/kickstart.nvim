@@ -13,7 +13,7 @@ local on_attach = function(client, bufnr)
 
   local navbuddy = require 'nvim-navbuddy'
 
-  require('lspconfig').clangd.setup {
+  vim.lsp.config("clangd", {
     on_attach = function(client, bufnr)
       navbuddy.attach(client, bufnr)
       require('lsp_signature').on_attach {
@@ -24,7 +24,7 @@ local on_attach = function(client, bufnr)
         bufnr,
       }
     end,
-  }
+  })
 
   local nmap = function(keys, func, desc)
     if desc then
@@ -102,6 +102,7 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
+  facility_language_server = {},
   ts_ls = {
     typescript = {
       inlayHints = {
