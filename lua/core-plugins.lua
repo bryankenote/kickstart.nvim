@@ -27,7 +27,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim',       opts = {} },
+      { 'j-hui/fidget.nvim', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -38,16 +38,16 @@ require('lazy').setup({
           -- Modern way: severity-keyed icons (this replaces your old loop)
           text = {
             [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
-            [vim.diagnostic.severity.WARN]  = icons.diagnostics.Warning,
-            [vim.diagnostic.severity.INFO]  = icons.diagnostics.Information,
-            [vim.diagnostic.severity.HINT]  = icons.diagnostics.Hint,
+            [vim.diagnostic.severity.WARN] = icons.diagnostics.Warning,
+            [vim.diagnostic.severity.INFO] = icons.diagnostics.Information,
+            [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
           },
           -- Optional: if you want line number highlighting (equivalent to your old numhl = hl)
           numhl = {
-            [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
-            [vim.diagnostic.severity.WARN]  = "DiagnosticSignWarn",
-            [vim.diagnostic.severity.INFO]  = "DiagnosticSignInfo",
-            [vim.diagnostic.severity.HINT]  = "DiagnosticSignHint",
+            [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
+            [vim.diagnostic.severity.WARN] = 'DiagnosticSignWarn',
+            [vim.diagnostic.severity.INFO] = 'DiagnosticSignInfo',
+            [vim.diagnostic.severity.HINT] = 'DiagnosticSignHint',
           },
           -- You could add linehl here too if you ever want full-line highlighting
         },
@@ -97,7 +97,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {}, event = { 'VeryLazy' } },
+  { 'folke/which-key.nvim', opts = {}, event = { 'VeryLazy' } },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -342,13 +342,17 @@ require('lazy').setup({
   {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
     -- event = { 'BufReadPre', 'BufNewFile' },
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
     build = ':TSUpdate',
   },
-
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    branch = 'main',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+    },
+  },
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
